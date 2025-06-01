@@ -3,9 +3,17 @@ package com.attijariwafa.chatbotCms.entities;
 import java.util.List;
 
 public class RuleYamlData {
+
     private List<Rule> rules;
 
     public List<Rule> getRules() { return rules; }
+
+    public RuleYamlData() {
+    }
+
+    public RuleYamlData(List<Rule> rules) {
+        this.rules = rules;
+    }
 
     public void setRules(List<Rule> rules) { this.rules = rules; }
 

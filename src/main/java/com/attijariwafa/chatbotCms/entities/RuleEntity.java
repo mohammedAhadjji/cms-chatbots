@@ -20,5 +20,29 @@ public class RuleEntity {
 
     @OneToMany(mappedBy = "rule", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<StepEntity> steps;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRuleName() {
+        return ruleName;
+    }
+
+    public void setRuleName(String ruleName) {
+        this.ruleName = ruleName;
+    }
+
+    public List<StepEntity> getSteps() {
+        return steps;
+    }
+
+    public void setSteps(List<StepEntity> steps) {
+        this.steps = steps;
+    }
 }
 

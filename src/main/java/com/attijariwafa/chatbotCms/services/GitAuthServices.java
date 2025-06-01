@@ -82,7 +82,7 @@ public class GitAuthServices {
 //            return "Erreur lors du push (auth requise ?) : " + e.getMessage();
 //        }
 //    }
-public String pushChanges(String localPath) {
+public String pushChanges(String localPath,String m) {
     try {
         Git git = Git.open(new File(localPath));
 
@@ -93,7 +93,7 @@ public String pushChanges(String localPath) {
 
         // Étape 2 : commit
         git.commit()
-                .setMessage("Auto-commit via GitSyncService")
+                .setMessage("Auto-commit via GitSyncService : " + m)
                 .call();
 
         // Étape 3 : push
@@ -103,6 +103,7 @@ public String pushChanges(String localPath) {
 
         return "Modifications ajoutées, commitées et poussées avec succès.";
     } catch (Exception e) {
+        e.printStackTrace();
         return "Erreur lors du push : " + e.getMessage();
     }
 }

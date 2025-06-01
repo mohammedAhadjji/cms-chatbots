@@ -12,6 +12,14 @@ public class DomainData {
         return intents;
     }
 
+    public DomainData() {
+    }
+
+    public DomainData(List<String> intents, Map<String, List<ResponseText>> responses) {
+        this.intents = intents;
+        this.responses = responses;
+    }
+
     public void setIntents(List<String> intents) {
         this.intents = intents;
     }

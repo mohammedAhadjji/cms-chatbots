@@ -20,4 +20,28 @@ public class IntentEntity {
     @OneToMany(mappedBy = "intent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ExampleEntity> examples;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<ExampleEntity> getExamples() {
+        return examples;
+    }
+
+    public void setExamples(List<ExampleEntity> examples) {
+        this.examples = examples;
+    }
+
+    public String getIntent() {
+        return intent;
+    }
+
+    public void setIntent(String intent) {
+        this.intent = intent;
+    }
+
 }

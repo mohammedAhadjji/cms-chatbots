@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout1">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+</head>
+<body>
+
+h2>Modifier Intent</h2>
+
+<form th:action="@{/intent/update}" th:object="${intentEntity}" method="post">
+     <input type="hidden" th:field="*{id}" />
+
+     <label for="intent">Nom de l'intent:</label>
+     <input type="text" id="intent" th:field="*{intent}" required /><br/><br/>
+
+     <h3>Exemples</h3>
+     <div th:each="example, iterStat : *{examples}">
+     <input type="hidden" th:field="*{examples[__${iterStat.index}__].id}" />
+     <input type="text" th:field="*{examples[__${iterStat.index}__].example}" />
+     <br/>
+     </div>
+
+ <button type="submit">Enregistrer</button>
+</form>
+
+<a th:href="@{/test}">Retour</a>
+
+</body>
+</html>

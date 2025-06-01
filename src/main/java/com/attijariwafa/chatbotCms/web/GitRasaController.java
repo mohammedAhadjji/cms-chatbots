@@ -49,10 +49,10 @@ public class GitRasaController {
     }
 
     @PostMapping(value = "/push", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> pushRepository(@RequestBody GitSyncRequest request) {
+    public ResponseEntity<String> pushRepository(@RequestBody GitSyncRequest request,@RequestParam String CommitMessage) {
         try {
             String localPath = "./src/main/resources/" + request.getLocalPath();
-            String result = gitAuthServices.pushChanges(localPath);
+            String result = gitAuthServices.pushChanges(localPath,CommitMessage);
             return ResponseEntity.ok(result);
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("Erreur : " + e.getMessage());

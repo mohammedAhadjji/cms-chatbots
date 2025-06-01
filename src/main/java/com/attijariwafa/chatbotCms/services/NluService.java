@@ -12,7 +12,7 @@ public class NluService {
 
     public NluData loadNluData() {
         try {
-            InputStream input = new ClassPathResource("nlu_data.yml").getInputStream();
+            InputStream input = new ClassPathResource("src/main/resources/rasa-content/data/nlu.yml").getInputStream();
             Yaml yaml = new Yaml();
             return yaml.loadAs(input, NluData.class);
         } catch (Exception e) {

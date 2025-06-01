@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+    >
+<head>
+    <title>Modifier Intent</title>
+    <style>
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 6px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container M-3" th:fragment="content1">
+    <h2>Modifier Intent</h2>
+
+    <form th:action="@{/intent/update}" th:object="${intentEntity}" method="post">
+        <!-- Champ caché pour l'ID -->
+        <input type="hidden" th:field="*{id}" />
+
+        <!-- Nom de l'intent -->
+        <label for="intent">Nom de l'intent :</label>
+        <input type="text" id="intent" th:field="*{intent}" required />
+
+        <!-- Liste des exemples -->
+        <h3>Exemples</h3>
+        <div th:each="example, iterStat : *{examples}">
+            <input type="hidden" th:field="*{examples[__${iterStat.index}__].id}" />
+            <input type="text" th:field="*{examples[__${iterStat.index}__].text}" />
+        </div>
+
+        <!-- Bouton d'enregistrement -->
+        <button type="submit">Enregistrer</button>
+    </form>
+
+    <!-- Lien de retour -->
+    <a th:href="@{/test}">Retour</a>
+</div>
+</body>
+</html>

@@ -1,20 +1,18 @@
 package com.attijariwafa.chatbotCms.entities;
-import jakarta.persistence.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
-
-public class NluData {
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
+public class NluDataDTO {
     private String version;
-      private List<Intent> nlu;
-
-    public NluData() {
-    }
-
-    public NluData(String version, List<Intent> nlu) {
-        this.version = version;
-        this.nlu = nlu;
-    }
+    private List<Intent> nlu;
 
     public List<Intent> getNlu() {
         return nlu;
@@ -31,5 +29,4 @@ public class NluData {
     public void setVersion(String version) {
         this.version = version;
     }
-
 }
